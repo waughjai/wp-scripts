@@ -39,7 +39,7 @@ namespace WaughJ\WPScripts
 		{
 			return function () use ( $name )
 			{
-				wp_enqueue_stylesheet( $name, self::getSource( $name ), [], self::getVersion( $name ) );
+				wp_enqueue_style( $name, self::getSource( $name ), [], self::getVersion( $name ) );
 			};
 		}
 
