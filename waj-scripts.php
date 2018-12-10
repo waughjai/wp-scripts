@@ -15,5 +15,8 @@
 	namespace WaughJ\WPScripts
 	{
 		require_once( 'vendor/autoload.php' );
+
+		WPStylesheets::init();
+		WPScripts::init();
 	}
 ?>

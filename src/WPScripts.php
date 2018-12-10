@@ -5,8 +5,6 @@ namespace WaughJ\WPScripts
 {
 	use WaughJ\FileLoader\FileLoader;
 
-	WPScripts::init();
-
 	class WPScripts
 	{
 		public static function init() : void

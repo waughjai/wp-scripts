@@ -6,8 +6,6 @@ namespace WaughJ\WPScripts
 	use WaughJ\FileLoader\FileLoader;
 	use WaughJ\WPMetaBox\WPMetaBox;
 
-	WPStylesheets::init();
-
 	class WPStylesheets
 	{
 		public static function init() : void
