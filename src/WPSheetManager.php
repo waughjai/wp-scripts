@@ -4,13 +4,15 @@ declare( strict_types = 1 );
 namespace WaughJ\WPScripts
 {
 	use WaughJ\FileLoader\FileLoader;
+	use WaughJ\WPMetaBox\WPMetaBox;
 
 	class WPSheetManager
 	{
-		public function __construct( FileLoader $loader, string $wp_action )
+		public function __construct( FileLoader $loader, string $wp_action, WPMetaBox $meta_box )
 		{
 			$this->loader = $loader;
 			$this->wp_action = $wp_action;
+			$this->meta_box = $meta_box;
 		}
 
 		public function register( string $name, string $wp_hook ) : void
@@ -38,5 +40,6 @@ namespace WaughJ\WPScripts
 
 		private $loader;
 		private $wp_action;
+		private $meta_box;
 	}
 }

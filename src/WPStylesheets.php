@@ -19,9 +19,13 @@ namespace WaughJ\WPScripts
 					'shared-directory' => 'css',
 					'extension' => 'css'
 				]),
-				'wp_enqueue_style'
+				'wp_enqueue_style',
+				new WPMetaBox
+				(
+					'page-css',
+					'Page Stylesheets'
+				)
 			);
-			self::createPageStylesheetMetaBox();
 		}
 
 		public static function register( string $name ) : void
@@ -29,16 +33,6 @@ namespace WaughJ\WPScripts
 			self::$sheet_manager->register( $name, 'wp_enqueue_scripts' );
 		}
 
-		private static function createPageStylesheetMetaBox() : void
-		{
-			self::$page_stylesheets_meta_box = new WPMetaBox
-			(
-				'page-css',
-				'Page Stylesheets'
-			);
-		}
-
 		private static $sheet_manager;
-		private static $page_stylesheets_meta_box;
 	}
 }

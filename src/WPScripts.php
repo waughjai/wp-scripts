@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 namespace WaughJ\WPScripts
 {
 	use WaughJ\FileLoader\FileLoader;
+	use WaughJ\WPMetaBox\WPMetaBox;
 
 	class WPScripts
 	{
@@ -18,7 +19,12 @@ namespace WaughJ\WPScripts
 					'shared-directory' => 'js',
 					'extension' => 'js'
 				]),
-				'wp_enqueue_script'
+				'wp_enqueue_script',
+				new WPMetaBox
+				(
+					'page-js',
+					'Page JavaScript'
+				)
 			);
 		}
 
