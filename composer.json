@@ -12,7 +12,8 @@
     "type": "library",
     "require": {
 		"php": ">=7.0",
-		"waughj/file-loader": "*"
+		"waughj/file-loader": "*",
+		"waughj/wp-meta-box": ">=0.1.3"
     },
     "require-dev": {
 		"phpunit/phpunit": "6.*"

@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 namespace WaughJ\WPScripts
 {
 	use WaughJ\FileLoader\FileLoader;
+	use WaughJ\WPMetaBox\WPMetaBox;
 
 	WPStylesheets::init();
 
@@ -22,6 +23,7 @@ namespace WaughJ\WPScripts
 				]),
 				'wp_enqueue_style'
 			);
+			self::createPageStylesheetMetaBox();
 		}
 
 		public static function register( string $name ) : void
@@ -29,6 +31,16 @@ namespace WaughJ\WPScripts
 			self::$sheet_manager->register( $name, 'wp_enqueue_scripts' );
 		}
 
+		private static function createPageStylesheetMetaBox() : void
+		{
+			self::$page_stylesheets_meta_box = new WPMetaBox
+			(
+				'page-css',
+				'Page Stylesheets'
+			);
+		}
+
 		private static $sheet_manager;
+		private static $page_stylesheets_meta_box;
 	}
 }
