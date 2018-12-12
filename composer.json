@@ -13,7 +13,7 @@
     "require": {
 		"php": ">=7.0",
 		"waughj/file-loader": "*",
-		"waughj/wp-meta-box": ">=0.1.3"
+		"waughj/wp-meta-box": ">=0.1.4"
     },
     "require-dev": {
 		"phpunit/phpunit": "6.*"
