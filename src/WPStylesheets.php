@@ -3,7 +3,6 @@
 declare( strict_types = 1 );
 namespace WaughJ\WPScripts
 {
-	require_once( 'waj-scripts.php' );
 	use WaughJ\FileLoader\FileLoader;
 	use WaughJ\WPMetaBox\WPMetaBox;
 

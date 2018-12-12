@@ -2,6 +2,7 @@
 
 require_once( 'MockWordPress.php' );
 
+require_once( 'waj-scripts.php' );
 use PHPUnit\Framework\TestCase;
 use WaughJ\WPScripts\WPStylesheets;
 
