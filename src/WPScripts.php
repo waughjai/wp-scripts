@@ -36,7 +36,14 @@ namespace WaughJ\WPScripts
 
 		public static function dequeueWPDefaults() : void
 		{
-			wp_deregister_script( 'jquery' );
+			add_action
+			(
+				'wp_enqueue_scripts',
+				function()
+				{
+					wp_deregister_script( 'jquery' );
+				}
+			);
 		}
 
 		private static function getWPHook( bool $load_in_header ) : string
