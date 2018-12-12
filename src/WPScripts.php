@@ -34,6 +34,11 @@ namespace WaughJ\WPScripts
 			self::$sheet_manager->register( $name, self::getWPHook( $load_in_header ) );
 		}
 
+		public static function dequeueWPDefaults() : void
+		{
+			wp_deregister_script( 'jquery' );
+		}
+
 		private static function getWPHook( bool $load_in_header ) : string
 		{
 			return ( $load_in_header ) ? 'wp_enqueue_scripts' : 'wp_footer';
