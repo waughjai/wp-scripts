@@ -9,6 +9,7 @@ class WPStylesheetsTest extends TestCase
 {
 	public function testObjectWorks()
 	{
+		$this->assertTrue( is_stylesheet_registered( 'home' ) );
 		$this->assertFalse( is_stylesheet_registered( 'main' ) );
 		WPStylesheets::register( 'main' );
 		$this->assertTrue( is_stylesheet_registered( 'main' ) );

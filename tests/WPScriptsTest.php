@@ -1,6 +1,7 @@
 <?php
 
 require_once( 'MockWordPress.php' );
+require_once( 'waj-scripts.php' );
 
 use PHPUnit\Framework\TestCase;
 use WaughJ\WPScripts\WPScripts;
@@ -9,6 +10,7 @@ class WPScriptsTest extends TestCase
 {
 	public function testObjectWorks()
 	{
+		$this->assertTrue( is_script_registered( 'home' ) );
 		$this->assertFalse( is_script_registered( 'main' ) );
 		WPScripts::register( 'main' );
 		$this->assertTrue( is_script_registered( 'main' ) );

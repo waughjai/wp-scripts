@@ -3,6 +3,7 @@
 declare( strict_types = 1 );
 namespace WaughJ\WPScripts
 {
+	require_once( 'waj-scripts.php' );
 	use WaughJ\FileLoader\FileLoader;
 	use WaughJ\WPMetaBox\WPMetaBox;
 
@@ -13,18 +14,18 @@ namespace WaughJ\WPScripts
 			self::$sheet_manager = new WPSheetManager
 			(
 				new FileLoader
-				([
-					'directory-url' => get_stylesheet_directory_uri(),
-					'directory-server' => get_stylesheet_directory(),
-					'shared-directory' => 'css',
-					'extension' => 'css'
-				]),
+					([
+						'directory-url' => get_stylesheet_directory_uri(),
+						'directory-server' => get_stylesheet_directory(),
+						'shared-directory' => 'css',
+						'extension' => 'css'
+					]),
 				'wp_enqueue_style',
 				new WPMetaBox
-				(
-					'page-css',
-					'Page Stylesheets'
-				)
+					(
+						'page-css',
+						'Page Stylesheets'
+					)
 			);
 		}
 

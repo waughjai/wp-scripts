@@ -38,7 +38,7 @@
 	{
 		global $last_type;
 		$last_type = $type;
-		$action();
+		$action( 1 );
 	}
 
 	function wp_enqueue_style( $name, $url, $dependencies, $version )
@@ -91,4 +91,34 @@
 	{
 		global $actions;
 		return TestHashItemExists( $actions, $name, '' );
+	}
+
+	function add_meta_box()
+	{
+		// This doesn't need to do anything here.
+	}
+
+	function __( $name )
+	{
+		return $name;
+	}
+
+	function current_user_can()
+	{
+		return true;
+	}
+
+	function get_post_meta()
+	{
+		return [ 'home' ];
+	}
+
+	function get_the_ID()
+	{
+		return 62;
+	}
+
+	function get_post_type()
+	{
+		return 'page';
 	}
