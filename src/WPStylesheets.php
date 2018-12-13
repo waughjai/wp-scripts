@@ -44,6 +44,17 @@ namespace WaughJ\WPScripts
 						}
 					);
 
+					add_settings_section
+					(
+						'main-stylesheet',
+						'Main Stylesheet',
+						function()
+						{
+							echo '<h2>Main Stylesheet</h2>';
+						},
+						'waj-design'
+					);
+
 					register_setting
 					(
 						'general',
