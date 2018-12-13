@@ -43,6 +43,7 @@ namespace WaughJ\WPScripts
 							?>
 								<div class="wrap">
 									<h1>Directories</h1>
+									<?php settings_errors(); ?>
 									<form method="post" action="options.php">
 							            <?php settings_fields( 'main_scripts' ); ?>
 							            <?php do_settings_sections( 'main_scripts' ); ?>
@@ -59,6 +60,7 @@ namespace WaughJ\WPScripts
 						__( 'Main Scripts', 'textdomain' ),
 						function()
 						{
+							echo 'scrip';
 						},
 						'theme_directories'
 					);
