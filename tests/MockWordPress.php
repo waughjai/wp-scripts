@@ -126,3 +126,19 @@
 	function add_theme_page()
 	{
 	}
+
+	function register_setting()
+	{
+	}
+
+	function get_option()
+	{
+	}
+
+	function add_option()
+	{
+	}
+
+	function add_settings_section()
+	{
+	}

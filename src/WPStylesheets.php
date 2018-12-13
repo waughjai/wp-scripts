@@ -3,9 +3,16 @@
 declare( strict_types = 1 );
 namespace WaughJ\WPScripts
 {
+	require_once( 'WPThemeOption.php' );
+	require_once( 'WPThemeOptionsPage.php' );
+	require_once( 'WPThemeOptionsSection.php' );
+
 	use WaughJ\FileLoader\FileLoader;
 	use WaughJ\WPMetaBox\WPMetaBox;
 	use function WaughJ\TestHashItem\TestHashItemExists;
+	use WaughJ\WPThemeOption\WPThemeOption;
+	use WaughJ\WPThemeOption\WPThemeOptionsPage;
+	use WaughJ\WPThemeOption\WPThemeOptionsSection;
 
 	class WPStylesheets
 	{
@@ -28,12 +35,12 @@ namespace WaughJ\WPScripts
 					)
 			);
 
-			$page = new WPThemeOptionsPage( 'directories', 'Lem' );
-			$page2 = new WPThemeOptionsPage( 'directories', 'Directories' );
+			$page = new WPThemeOptionsPage( 'directories', 'Directories' );
+			$section = new WPThemeOptionsSection( $page, 'main_scripts', 'Main Scripts' );
 			/*
 			new WPThemeOption
 			(
-				'directories',
+				$page,
 				'main_scripts',
 				'main_css',
 				'Main CSS'

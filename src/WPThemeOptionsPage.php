@@ -1,30 +1,41 @@
 <?php
 
 declare( strict_types = 1 );
-namespace WaughJ\WPScripts
+namespace WaughJ\WPThemeOption
 {
 	class WPThemeOptionsPage
 	{
 		public function __construct( string $slug, string $name )
 		{
-			$this->slug = $slug;
+			$this->slug = "theme_{$slug}";
 			$this->name = __( $name, 'textdomain' );
 			add_action( 'admin_menu', [ $this, 'register' ] );
 		}
 
-		public function register()
+		public function register() : void
 		{
 			add_theme_page
 			(
 				$this->name,
 				$this->name,
 				'manage_options',
-				"theme_{$this->slug}",
+				$this->slug,
 				[ $this, 'render' ]
+			);
+
+			register_setting
+			(
+				$this->getOptionsGroup(),
+				$this->getOptionsGroup()
 			);
 		}
 
-		public function render()
+		public function getOptionsGroup() : string
+		{
+			return "{$this->slug}_options";
+		}
+
+		public function render() : void
 		{
 			?>
 				<div class="wrap">
