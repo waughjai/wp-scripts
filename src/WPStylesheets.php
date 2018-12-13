@@ -46,7 +46,7 @@ namespace WaughJ\WPScripts
 
 					register_setting
 					(
-						'waj-design',
+						'general',
 						'main-stylesheet',
 						[
 							'type' => 'string'
