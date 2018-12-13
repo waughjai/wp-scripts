@@ -40,23 +40,32 @@ namespace WaughJ\WPScripts
 						'theme_directories',
 						function()
 						{
-							echo '<h1>Directories</h1>';
+							?>
+								<div class="wrap">
+									<h1>Directories</h1>
+									<form method="post" action="options.php">
+							            <?php settings_fields( 'main_scripts' ); ?>
+							            <?php do_settings_sections( 'main_scripts' ); ?>
+							            <?php submit_button(); ?>
+							        </form>
+								</div>
+							<?php
 						}
 					);
 
 					add_settings_section
 					(
-						'main_stylesheet',
-						__( 'Main Stylesheet', 'textdomain' ),
+						'main_scripts',
+						__( 'Main Scripts', 'textdomain' ),
 						function()
 						{
 						},
-						'waj_design'
+						'theme_directories'
 					);
 
 					register_setting
 					(
-						'waj_design',
+						'theme_directories',
 						'main_stylesheet',
 						[
 							'type' => 'string',
@@ -73,8 +82,8 @@ namespace WaughJ\WPScripts
 						{
 							?><input type="text" name="main_stylesheet" id="main_stylesheet" placeholder="Main Stylesheet" value="<?= get_option( 'main_stylesheet', '' ); ?>" /><?php
 						},
-						'waj_design',
-						'main_stylesheet',
+						'theme_directories',
+						'main_scripts',
 						[
 							'label_for' => 'main_stylesheet'
 						]
