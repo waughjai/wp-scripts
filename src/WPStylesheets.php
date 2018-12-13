@@ -93,7 +93,7 @@ namespace WaughJ\WPScripts
 						},
 						'theme_directories_options',
 						'main_scripts',
-						[ 'label_for' => 'main_scripts' ]
+						[ 'label_for' => 'main_css' ]
 					);
 
 					register_setting
