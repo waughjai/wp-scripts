@@ -28,7 +28,8 @@ namespace WaughJ\WPScripts
 					)
 			);
 
-			$page = new WPThemeOptionsPage( 'directories', 'Directories' );
+			$page = new WPThemeOptionsPage( 'directories', 'Lem' );
+			$page2 = new WPThemeOptionsPage( 'directories', 'Directories' );
 			/*
 			new WPThemeOption
 			(
