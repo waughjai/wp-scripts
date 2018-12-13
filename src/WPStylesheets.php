@@ -52,7 +52,7 @@ namespace WaughJ\WPScripts
 						{
 							echo '<h2>Main Stylesheet</h2>';
 						},
-						'waj_design'
+						'general'
 					);
 				}
 			);
