@@ -18,18 +18,10 @@ namespace WaughJ\WPScripts
 			$this->meta_box = $meta_box;
 			$this->default_wp_hook = $default_wp_hook;
 
-			if ( self::$theme_options_section === null )
-			{
-				if ( self::$theme_options_page === null )
-				{
-					self::$theme_options_page = new WPThemeOptionsPage( 'directories', 'Directories' );
-				}
-				self::$theme_options_section = new WPThemeOptionsSection( self::$theme_options_page, 'main_scripts', 'Main Scripts' );
-			}
-
+			$section = self::getWPThemeOptionSection();
 			$this->option = new WPThemeOption
 			(
-				self::$theme_options_section,
+				$section,
 				$option_slug,
 				$option_name
 			);
@@ -74,6 +66,19 @@ namespace WaughJ\WPScripts
 		public function getVersion( string $name ) : string
 		{
 			return ( string )( $this->loader->getVersion( $name ) );
+		}
+
+		public static function getWPThemeOptionSection() : WPThemeOptionsSection
+		{
+			if ( self::$theme_options_section === null )
+			{
+				if ( self::$theme_options_page === null )
+				{
+					self::$theme_options_page = new WPThemeOptionsPage( 'directories', 'Directories' );
+				}
+				self::$theme_options_section = new WPThemeOptionsSection( self::$theme_options_page, 'main_scripts', 'Main Scripts' );
+			}
+			return self::$theme_options_section;
 		}
 
 		private function enqueue( string $name ) : void

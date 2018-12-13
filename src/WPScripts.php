@@ -5,6 +5,7 @@ namespace WaughJ\WPScripts
 {
 	use WaughJ\FileLoader\FileLoader;
 	use WaughJ\WPMetaBox\WPMetaBox;
+	use WaughJ\WPThemeOption\WPThemeOption;
 
 	class WPScripts
 	{
@@ -28,6 +29,26 @@ namespace WaughJ\WPScripts
 				'main_js',
 				'Main JS',
 				'wp_footer'
+			);
+
+			self::$no_jquery_checkbox = new WPThemeOption
+			(
+				WPSheetManager::getWPThemeOptionSection(),
+				'remove_jquery',
+				'¿Remove jQuery?',
+				[ 'input_type' => 'checkbox' ]
+			);
+
+			add_action
+			(
+				'wp_enqueue_scripts',
+				function()
+				{
+					if ( self::$no_jquery_checkbox->getOptionValue() )
+					{
+						wp_deregister_script( 'jquery' );
+					}
+				}
 			);
 		}
 
@@ -54,5 +75,6 @@ namespace WaughJ\WPScripts
 		}
 
 		private static $sheet_manager;
+		private static $no_jquery_checkbox;
 	}
 }
