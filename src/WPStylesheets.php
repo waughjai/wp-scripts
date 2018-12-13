@@ -65,14 +65,14 @@ namespace WaughJ\WPScripts
 			);
 			*/
 
-			add_options_page
+			/*add_options_page
 			(
 				'Design',
 				'Design',
 				'manage_options',
 				'waj-design',
 				function() {}
-			);
+			);*/
 		}
 
 		public static function register( string $name ) : void
