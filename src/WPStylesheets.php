@@ -37,7 +37,7 @@ namespace WaughJ\WPScripts
 						__( 'Directories', 'textdomain' ),
 						__( 'Directories', 'textdomain' ),
 						'manage_options',
-						'ascendhg_theme_directories',
+						'theme_directories',
 						function()
 						{
 							?>
@@ -69,7 +69,13 @@ namespace WaughJ\WPScripts
 						{
 							echo 'scrip';
 						},
-						'ascendhg_theme_directories'
+						'theme_directories'
+					);
+
+					register_setting
+					(
+						'main_scripts',
+						'main_scripts'
 					);
 				}
 			);
