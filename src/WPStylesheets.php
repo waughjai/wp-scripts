@@ -41,7 +41,7 @@ namespace WaughJ\WPScripts
 						function()
 						{
 							echo '<h1>Design</h1>';
-							print_r( $GLOBALS['admin_page_hooks'] );
+							print_r( $GLOBALS['admin_menu_hooks'] );
 						}
 					);
 				}
