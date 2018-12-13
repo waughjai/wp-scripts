@@ -27,6 +27,7 @@ namespace WaughJ\WPScripts
 					)
 			);
 
+			/*
 			add_action
 			(
 				'customize_register',
@@ -61,6 +62,16 @@ namespace WaughJ\WPScripts
 						]
 					);
 				}
+			);
+			*/
+
+			add_options_page
+			(
+				'Design',
+				'Design',
+				'manage_options',
+				'waj-design',
+				function() {}
 			);
 		}
 
