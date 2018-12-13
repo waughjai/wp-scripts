@@ -45,8 +45,8 @@ namespace WaughJ\WPScripts
 									<h1>Directories</h1>
 									<?php settings_errors(); ?>
 									<form method="post" action="options.php">
-							            <?php settings_fields( 'main_scripts' ); ?>
-							            <?php do_settings_sections( 'main_scripts' ); ?>
+							            <?php settings_fields( 'theme_directories_options' ); ?>
+							            <?php do_settings_sections( 'theme_directories_options' ); ?>
 							            <?php submit_button(); ?>
 							        </form>
 								</div>
@@ -69,13 +69,13 @@ namespace WaughJ\WPScripts
 						{
 							echo 'scrip';
 						},
-						'theme_directories'
+						'theme_directories_options'
 					);
 
 					register_setting
 					(
-						'main_scripts',
-						'main_scripts'
+						'theme_directories_options',
+						'theme_directories_options'
 					);
 				}
 			);
