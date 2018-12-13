@@ -27,44 +27,6 @@ namespace WaughJ\WPScripts
 					)
 			);
 
-			/*
-			add_action
-			(
-				'customize_register',
-				function( $wp_customize )
-				{
-					$wp_customize->add_section
-					(
-						'main_scripts',
-						[
-							'title' => __( 'Main Scripts', get_option( 'stylesheet' ) )
-						]
-					);
-
-					$wp_customize->add_setting
-					(
-						'main_stylesheet',
-						[
-							'type' => 'theme_mod',
-							'default' => '',
-							'sanitize_callback' => 'sanitize_html_class'
-						]
-					);
-
-					$wp_customize->add_control
-					(
-						'main_stylesheet',
-						[
-							'type' => 'text',
-							'section' => 'main_scripts',
-							'label' => __( 'Main Stylesheet' ),
-							'description' => 'This is the stylesheet that will load on every page.'
-						]
-					);
-				}
-			);
-			*/
-
 			add_action
 			(
 				'admin_menu',
@@ -79,6 +41,7 @@ namespace WaughJ\WPScripts
 						function()
 						{
 							echo '<h1>Design</h1>';
+							print_r( $GLOBALS['admin_page_hooks'] );
 						}
 					);
 				}
