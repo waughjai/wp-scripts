@@ -37,7 +37,7 @@ namespace WaughJ\WPScripts
 						__( 'Design', 'textdomain' ),
 						__( 'Design', 'textdomain' ),
 						'manage_options',
-						'waj-design',
+						'waj_design',
 						function()
 						{
 							echo '<h1>Design</h1>';
@@ -46,22 +46,13 @@ namespace WaughJ\WPScripts
 
 					add_settings_section
 					(
-						'main-stylesheet',
+						'main_stylesheet',
 						'Main Stylesheet',
 						function()
 						{
 							echo '<h2>Main Stylesheet</h2>';
 						},
-						'waj-design'
-					);
-
-					register_setting
-					(
-						'general',
-						'main-stylesheet',
-						[
-							'type' => 'string'
-						]
+						'waj_design'
 					);
 				}
 			);
