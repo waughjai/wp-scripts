@@ -42,8 +42,8 @@ namespace WaughJ\WPThemeOption
 					<h1><?= $this->name; ?></h1>
 					<?php settings_errors(); ?>
 					<form method="post" action="options.php">
-						<?php settings_fields( 'theme_directories_options' ); ?>
-						<?php do_settings_sections( 'theme_directories_options' ); ?>
+						<?php settings_fields( $this->getOptionsGroup() ); ?>
+						<?php do_settings_sections( $this->getOptionsGroup() ); ?>
 						<?php submit_button(); ?>
 					</form>
 				</div>
