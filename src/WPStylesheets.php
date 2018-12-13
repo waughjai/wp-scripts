@@ -54,6 +54,17 @@ namespace WaughJ\WPScripts
 						'general'
 					);
 
+					register_setting
+					(
+						'general',
+						'main_stylesheet',
+						[
+							'type' => 'string',
+							'sanitize_callback' => 'sanitize_html_class',
+							'default' => null
+						]
+					);
+
 					add_settings_field
 					(
 						'main_stylesheet',
