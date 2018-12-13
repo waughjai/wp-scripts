@@ -61,11 +61,6 @@ namespace WaughJ\WPScripts
 				'admin_init',
 				function()
 				{
-					if ( get_option( 'main_stylesheet' ) === false )
-					{
-						add_option( 'main_stylesheet' );
-					}
-
 					add_settings_section
 					(
 						'main_scripts',
@@ -75,32 +70,6 @@ namespace WaughJ\WPScripts
 							echo 'scrip';
 						},
 						'theme_directories'
-					);
-
-					register_setting
-					(
-						'theme_directories',
-						'main_stylesheet',
-						[
-							'type' => 'string',
-							'sanitize_callback' => 'sanitize_html_class',
-							'default' => null
-						]
-					);
-
-					add_settings_field
-					(
-						'main_stylesheet',
-						__( 'Main Stylesheet', 'textdomain' ),
-						function()
-						{
-							?><input type="text" name="main_stylesheet" id="main_stylesheet" placeholder="Main Stylesheet" value="<?= get_option( 'main_stylesheet', '' ); ?>" /><?php
-						},
-						'theme_directories',
-						'main_scripts',
-						[
-							'label_for' => 'main_stylesheet'
-						]
 					);
 				}
 			);
