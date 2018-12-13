@@ -84,7 +84,7 @@ namespace WaughJ\WPScripts
 						function()
 						{
 							$options = get_option( 'theme_directories_options' );
-							$option_value = ( is_array( $options )
+							$option_value = ( is_array( $options ) )
 								? TestHashItemExists( $options, 'main_css', '' )
 								: $options;
 							echo $option_value;
