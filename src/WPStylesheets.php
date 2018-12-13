@@ -87,9 +87,8 @@ namespace WaughJ\WPScripts
 							$option_value = ( is_array( $options ) )
 								? TestHashItemExists( $options, 'main_css', '' )
 								: $options;
-							echo $option_value;
 							?>
-								<input type="text" id="main_css" name="theme_directories_options[main_css]" placeholder="Main CSS" />
+								<input type="text" id="main_css" name="theme_directories_options[main_css]" placeholder="Main CSS" value="<?= $option_value; ?>" />
 							<?php
 						},
 						'theme_directories_options',
