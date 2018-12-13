@@ -51,12 +51,12 @@ namespace WaughJ\WPScripts
 						function()
 						{
 						},
-						'general'
+						'waj_design'
 					);
 
 					register_setting
 					(
-						'general',
+						'waj_design',
 						'main_stylesheet',
 						[
 							'type' => 'string',
@@ -73,7 +73,7 @@ namespace WaughJ\WPScripts
 						{
 							?><input type="text" name="main_stylesheet" id="main_stylesheet" placeholder="Main Stylesheet" value="<?= get_option( 'main_stylesheet', '' ); ?>" /><?php
 						},
-						'general',
+						'waj_design',
 						'main_stylesheet',
 						[
 							'label_for' => 'main_stylesheet'
