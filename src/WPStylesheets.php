@@ -42,9 +42,22 @@ namespace WaughJ\WPScripts
 
 					$wp_customize->add_setting
 					(
-						'main_scripts',
+						'main_stylesheet',
 						[
-							'default' => ''
+							'type' => 'theme_mod',
+							'default' => '',
+							'sanitize_callback' => 'sanitize_html_class'
+						]
+					);
+
+					$wp_customize->add_control
+					(
+						'main_stylesheet',
+						[
+							'type' => 'text',
+							'section' => 'main_scripts',
+							'label' => __( 'Main Stylesheet' ),
+							'description' => 'This is the stylesheet that will load on every page.'
 						]
 					);
 				}
