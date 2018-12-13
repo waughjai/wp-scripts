@@ -32,15 +32,15 @@ namespace WaughJ\WPScripts
 				'admin_menu',
 				function()
 				{
-					add_options_page
+					add_theme_page
 					(
-						__( 'Design', 'textdomain' ),
-						__( 'Design', 'textdomain' ),
+						__( 'Directories', 'textdomain' ),
+						__( 'Directories', 'textdomain' ),
 						'manage_options',
-						'waj_design',
+						'theme_directories',
 						function()
 						{
-							echo '<h1>Design</h1>';
+							echo '<h1>Directories</h1>';
 						}
 					);
 
