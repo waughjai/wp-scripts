@@ -41,8 +41,16 @@ namespace WaughJ\WPScripts
 						function()
 						{
 							echo '<h1>Design</h1>';
-							print_r( $GLOBALS['admin_menu_hooks'] );
 						}
+					);
+
+					register_setting
+					(
+						'waj-design',
+						'main-stylesheet',
+						[
+							'type' => 'string'
+						]
 					);
 				}
 			);
