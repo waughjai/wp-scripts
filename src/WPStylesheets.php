@@ -89,8 +89,7 @@ namespace WaughJ\WPScripts
 								<input type="text" id="main_css" name="theme_directories_options[main_css]" placeholder="Main CSS" />
 							<?php
 						},
-						'theme_directories_options',
-						[]
+						'theme_directories_options'
 					);
 
 					register_setting
