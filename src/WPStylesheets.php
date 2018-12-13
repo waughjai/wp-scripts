@@ -26,6 +26,29 @@ namespace WaughJ\WPScripts
 						'Page Stylesheets'
 					)
 			);
+
+			add_action
+			(
+				'customize_register',
+				function( $wp_customize )
+				{
+					$wp_customize->add_section
+					(
+						'main_scripts',
+						[
+							'title' => __( 'Main Scripts', get_option( 'stylesheet' ) )
+						]
+					);
+
+					$wp_customize->add_setting
+					(
+						'main_scripts',
+						[
+							'default' => ''
+						]
+					);
+				}
+			);
 		}
 
 		public static function register( string $name ) : void
