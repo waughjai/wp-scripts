@@ -29,6 +29,7 @@ namespace WaughJ\WPThemeOption
 
 		public function render() : void
 		{
+			?><input type="text" id="<?= $this->slug; ?>" name="<?= $this->page->getOptionsGroup(); ?>[<?= $this->slug; ?>]" placeholder="<?= $this->name; ?>" value="<?= $this->getOptionValue(); ?>" /><?php
 		}
 
 		private function getOptionValue()
