@@ -5,58 +5,39 @@ namespace WaughJ\WPThemeOption
 {
 	class WPThemeOption
 	{
-		public function __construct( WPThemeOptionsPage $page, string $section, string $slug, string $name )
+		public function __construct( WPThemeOptionsPage $page, WPThemeOptionsSection $section, string $slug, string $name )
 		{
 			$this->page = $page;
 			$this->section = $section;
 			$this->slug = $slug;
-			$this->name = $name;
+			$this->name = __( $name, 'textdomain' );
 			add_action( 'admin_init', [ $this, 'register' ] );
 		}
 
 		public function register()
 		{
-			/*
-			if ( get_option( 'theme_directories_options' ) == false )
-			{
-				add_option( 'theme_directories_options' );
-			}
-
-			add_settings_section
-			(
-				'main_scripts',
-				__( 'Main Scripts', 'textdomain' ),
-				function()
-				{
-				},
-				'theme_directories_options'
-			);
-
 			add_settings_field
 			(
-				'main_css',
-				__( 'Main CSS', 'textdomain' ),
+				$this->slug,
+				$this->name,
 				function()
 				{
-					$options = get_option( 'theme_directories_options' );
-					$option_value = ( is_array( $options ) )
-						? TestHashItemExists( $options, 'main_css', '' )
-						: $options;
 					?>
-						<input type="text" id="main_css" name="theme_directories_options[main_css]" placeholder="Main CSS" value="<?= $option_value; ?>" />
+						<input type="text" id="<?= $this->slug; ?>" name="<?= $this->page->getOptionsGroup(); ?>[<?= $this->slug; ?>]" placeholder="<?= $this->title; ?>" value="<?= $this->getOptionValue(); ?>" />
 					<?php
 				},
-				'theme_directories_options',
-				'main_scripts',
-				[ 'label_for' => 'main_css' ]
+				$this->page->getOptionsGroup(),
+				$this->section->getSlug(),
+				[ 'label_for' => $this->slug ]
 			);
+		}
 
-			register_setting
-			(
-				'theme_directories_options',
-				'theme_directories_options'
-			);
-			*/
+		private function getOptionValue()
+		{
+			$options = get_option( $this->page->getOptionsGroup() );
+			return ( is_array( $options ) )
+				? TestHashItemExists( $options, $this->slug, '' )
+				: $options;
 		}
 
 		private $page;

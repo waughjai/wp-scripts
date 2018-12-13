@@ -37,14 +37,13 @@ namespace WaughJ\WPScripts
 
 			$page = new WPThemeOptionsPage( 'directories', 'Directories' );
 			$section = new WPThemeOptionsSection( $page, 'main_scripts', 'Main Scripts' );
-			/*
 			new WPThemeOption
 			(
 				$page,
-				'main_scripts',
+				$section,
 				'main_css',
 				'Main CSS'
-			);*/
+			);
 		}
 
 		public static function register( string $name ) : void

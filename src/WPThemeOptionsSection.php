@@ -31,6 +31,11 @@ namespace WaughJ\WPThemeOption
 			);
 		}
 
+		public function getSlug() : string
+		{
+			return $this->slug;
+		}
+
 		private $page;
 		private $slug;
 		private $name;

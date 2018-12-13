@@ -142,3 +142,7 @@
 	function add_settings_section()
 	{
 	}
+
+	function add_settings_field()
+	{
+	}
