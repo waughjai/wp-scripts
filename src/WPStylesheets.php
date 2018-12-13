@@ -47,12 +47,23 @@ namespace WaughJ\WPScripts
 					add_settings_section
 					(
 						'main_stylesheet',
-						'Main Stylesheet',
+						__( 'Main Stylesheet', 'textdomain' ),
 						function()
 						{
-							echo '<h2>Main Stylesheet</h2>';
 						},
 						'general'
+					);
+
+					add_settings_field
+					(
+						'main_stylesheet',
+						__( 'Main Stylesheet', 'textdomain' ),
+						function()
+						{
+							?><input type="text" name="main_stylesheet" id="main_stylesheet" /><?php
+						},
+						'general',
+						'main_stylesheet'
 					);
 				}
 			);
