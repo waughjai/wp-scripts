@@ -5,6 +5,7 @@ namespace WaughJ\WPScripts
 {
 	use WaughJ\FileLoader\FileLoader;
 	use WaughJ\WPMetaBox\WPMetaBox;
+	use function WaughJ\TestHashItem\TestHashItemExists;
 
 	class WPStylesheets
 	{
@@ -83,8 +84,9 @@ namespace WaughJ\WPScripts
 						function()
 						{
 							$options = get_option( 'theme_directories_options' );
+							$option_value = TestHashItemExists( $options, 'main_css', '' );
 							?>
-								<input type="text" id="main_css" name="theme_directories_options[main_css]" placeholder="Main CSS" value="<?= $options[ 'main_css' ]; ?>" />
+								<input type="text" id="main_css" name="theme_directories_options[main_css]" placeholder="Main CSS" value="<?= $option_value; ?>" />
 							<?php
 						},
 						'theme_directories_options',
