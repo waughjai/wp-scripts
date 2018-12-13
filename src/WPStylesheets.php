@@ -60,7 +60,7 @@ namespace WaughJ\WPScripts
 						__( 'Main Stylesheet', 'textdomain' ),
 						function()
 						{
-							?><input type="text" name="main_stylesheet" id="main_stylesheet" /><?php
+							?><input type="text" name="main_stylesheet" id="main_stylesheet" placeholder="Main Stylesheet" value="<?= get_option( 'main_stylesheet', '' ); ?>" /><?php
 						},
 						'general',
 						'main_stylesheet',
