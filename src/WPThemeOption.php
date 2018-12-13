@@ -3,6 +3,8 @@
 declare( strict_types = 1 );
 namespace WaughJ\WPThemeOption
 {
+	use function WaughJ\TestHashItem\TestHashItemExists;
+
 	class WPThemeOption
 	{
 		public function __construct( WPThemeOptionsPage $page, WPThemeOptionsSection $section, string $slug, string $name )

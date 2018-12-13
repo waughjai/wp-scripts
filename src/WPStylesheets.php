@@ -9,7 +9,6 @@ namespace WaughJ\WPScripts
 
 	use WaughJ\FileLoader\FileLoader;
 	use WaughJ\WPMetaBox\WPMetaBox;
-	use function WaughJ\TestHashItem\TestHashItemExists;
 	use WaughJ\WPThemeOption\WPThemeOption;
 	use WaughJ\WPThemeOption\WPThemeOptionsPage;
 	use WaughJ\WPThemeOption\WPThemeOptionsSection;
