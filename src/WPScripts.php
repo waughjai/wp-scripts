@@ -25,6 +25,8 @@ namespace WaughJ\WPScripts
 					'page-js',
 					'Page JavaScript'
 				),
+				'main_js',
+				'Main JS',
 				'wp_footer'
 			);
 		}
