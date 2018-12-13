@@ -9,10 +9,11 @@ namespace WaughJ\WPThemeOption
 		{
 			$this->slug = "theme_{$slug}";
 			$this->name = __( $name, 'textdomain' );
-			add_action( 'admin_menu', [ $this, 'register' ] );
+			add_action( 'admin_menu', [ $this, 'addThemePage' ] );
+			add_action( 'admin_init', [ $this, 'registerSetting' ] );
 		}
 
-		public function register() : void
+		public function addThemePage() : void
 		{
 			add_theme_page
 			(
@@ -22,7 +23,10 @@ namespace WaughJ\WPThemeOption
 				$this->slug,
 				[ $this, 'render' ]
 			);
+		}
 
+		public function registerSetting()
+		{
 			register_setting
 			(
 				$this->getOptionsGroup(),
