@@ -67,9 +67,23 @@ namespace WaughJ\WPScripts
 						__( 'Main Scripts', 'textdomain' ),
 						function()
 						{
-							echo 'scrip';
 						},
 						'theme_directories_options'
+					);
+
+					add_settings_field
+					(
+						'main_css',
+						__( 'Main CSS', 'textdomain' ),
+						function()
+						{
+							$options = get_option( 'theme_directories_options' );
+							?>
+								<input type="text" id="main_css" name="theme_directories_options[main_css]" placeholder="Main CSS" value="<?= $options[ 'main_css' ]; ?>" />
+							<?php
+						},
+						'theme_directories_options',
+						[]
 					);
 
 					register_setting
