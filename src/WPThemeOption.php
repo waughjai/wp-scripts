@@ -20,16 +20,16 @@ namespace WaughJ\WPThemeOption
 			(
 				$this->slug,
 				$this->name,
-				function()
-				{
-					?>
-						<input type="text" id="<?= $this->slug; ?>" name="<?= $this->page->getOptionsGroup(); ?>[<?= $this->slug; ?>]" placeholder="<?= $this->title; ?>" value="<?= $this->getOptionValue(); ?>" />
-					<?php
-				},
+				[ $this, 'render' ],
 				$this->page->getOptionsGroup(),
 				$this->section->getSlug(),
 				[ 'label_for' => $this->slug ]
 			);
+		}
+
+		public function render() : void
+		{
+			?><input type="text" id="<?= $this->slug; ?>" name="<?= $this->page->getOptionsGroup(); ?>[<?= $this->slug; ?>]" placeholder="<?= $this->title; ?>" value="<?= $this->getOptionValue(); ?>" /><?php
 		}
 
 		private function getOptionValue()
