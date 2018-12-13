@@ -27,6 +27,12 @@ namespace WaughJ\WPThemeOption
 
 		public function registerSetting()
 		{
+
+			if ( get_option( $this->getOptionsGroup() ) == false )
+			{
+				add_option( $this->getOptionsGroup() );
+			}
+
 			register_setting
 			(
 				$this->getOptionsGroup(),
