@@ -63,7 +63,10 @@ namespace WaughJ\WPScripts
 							?><input type="text" name="main_stylesheet" id="main_stylesheet" /><?php
 						},
 						'general',
-						'main_stylesheet'
+						'main_stylesheet',
+						[
+							'label_for' => 'main_stylesheet'
+						]
 					);
 				}
 			);
