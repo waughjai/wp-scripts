@@ -61,6 +61,11 @@ namespace WaughJ\WPScripts
 				'admin_init',
 				function()
 				{
+					if ( get_option( 'theme_directories_options' ) === false )
+					{
+						add_option( 'theme_directories_options' );
+					}
+
 					add_settings_section
 					(
 						'main_scripts',
