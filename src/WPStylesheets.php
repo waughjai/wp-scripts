@@ -83,10 +83,10 @@ namespace WaughJ\WPScripts
 						__( 'Main CSS', 'textdomain' ),
 						function()
 						{
-							$options = get_option( 'theme_directories_options' );
-							$option_value = TestHashItemExists( $options, 'main_css', '' );
+							//$options = get_option( 'theme_directories_options' );
+							//$option_value = TestHashItemExists( $options, 'main_css', '' );
 							?>
-								<input type="text" id="main_css" name="theme_directories_options[main_css]" placeholder="Main CSS" value="<?= $option_value; ?>" />
+								<input type="text" id="main_css" name="theme_directories_options[main_css]" placeholder="Main CSS" />
 							<?php
 						},
 						'theme_directories_options',
