@@ -122,3 +122,7 @@
 	{
 		return 'page';
 	}
+
+	function add_theme_page()
+	{
+	}
