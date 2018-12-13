@@ -72,11 +72,14 @@ namespace WaughJ\WPScripts
 				{
 					add_options_page
 					(
-						'Design',
-						'Design',
+						__( 'Design', 'textdomain' ),
+						__( 'Design', 'textdomain' ),
 						'manage_options',
 						'waj-design',
-						function() {}
+						function()
+						{
+							echo '<h1>Design</h1>';
+						}
 					);
 				}
 			);
