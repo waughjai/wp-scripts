@@ -53,6 +53,18 @@ namespace WaughJ\WPScripts
 							<?php
 						}
 					);
+				}
+			);
+
+			add_action
+			(
+				'admin_init',
+				function()
+				{
+					if ( get_option( 'main_stylesheet' ) === false )
+					{
+						add_option( 'main_stylesheet' );
+					}
 
 					add_settings_section
 					(
