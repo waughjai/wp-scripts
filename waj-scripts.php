@@ -4,7 +4,7 @@
 	Plugin Name:  WAJ Scripts
 	Plugin URI:   https://github.com/waughjai/waj-scripts
 	Description:  WordPress plugin for easily adding CSS stylesheets & JavaScript files.
-	Version:      0.3.0
+	Version:      1.0.0
 	Author:       Jaimeson Waugh
 	Author URI:   https://www.jaimeson-waugh.com
 	License:      GPL2
