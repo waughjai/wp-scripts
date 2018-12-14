@@ -14,7 +14,7 @@
 		"php": ">=7.0",
 		"waughj/file-loader": "*",
 		"waughj/wp-meta-box": ">=0.1.4",
-		"waughj/wp-theme-option": ">=0.1.1"
+		"waughj/wp-theme-option": ">=0.2.0"
     },
     "require-dev": {
 		"phpunit/phpunit": "6.*"
