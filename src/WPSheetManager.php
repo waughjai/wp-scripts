@@ -7,6 +7,7 @@ namespace WaughJ\WPScripts
 	use WaughJ\WPMetaBox\WPMetaBox;
 	use WaughJ\WPThemeOption\WPThemeOption;
 	use WaughJ\WPThemeOption\WPThemeOptionsPage;
+	use WaughJ\WPThemeOption\WPThemeOptionsPageManager;
 	use WaughJ\WPThemeOption\WPThemeOptionsSection;
 
 	class WPSheetManager
@@ -74,7 +75,7 @@ namespace WaughJ\WPScripts
 			{
 				if ( self::$theme_options_page === null )
 				{
-					self::$theme_options_page = new WPThemeOptionsPage( 'directories', 'Directories' );
+					self::$theme_options_page = WPThemeOptionsPageManager::initializeIfNotAlreadyInitialized( 'directories', 'Directories' );
 				}
 				self::$theme_options_section = new WPThemeOptionsSection( self::$theme_options_page, 'main_scripts', 'Main Scripts' );
 			}
