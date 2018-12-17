@@ -41,9 +41,15 @@ namespace WaughJ\WPScripts
 					if ( get_post_type() == 'page' )
 					{
 						$page_sheets = get_post_meta( get_the_ID(), $this->meta_box->getSlug(), false );
-						foreach ( $page_sheets as $sheet )
+						if ( $page_sheets )
 						{
-							$this->enqueue( $sheet );
+							foreach ( $page_sheets as $sheet )
+							{
+								if ( $sheet )
+								{
+									$this->enqueue( $sheet );
+								}
+							}
 						}
 					}
 				}
