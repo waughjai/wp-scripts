@@ -25,14 +25,18 @@ namespace WaughJ\WPScripts
 						'page-css',
 						'Page Stylesheets'
 					),
-				'main_css',
-				'Main CSS'
+				new WPScriptThemeOption( 'main_css', 'Main CSS' )
 			);
 		}
 
 		public static function register( string $name ) : void
 		{
 			self::$sheet_manager->register( $name, 'wp_enqueue_scripts' );
+		}
+
+		public static function registerRaw( string $name, string $src, string $version = null ) : void
+		{
+			self::$sheet_manager->registerRaw( $name, $src, 'wp_enqueue_scripts', $version );
 		}
 
 		public static function addRegistrator( callable $function ) : void

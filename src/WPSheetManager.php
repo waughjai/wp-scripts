@@ -5,34 +5,23 @@ namespace WaughJ\WPScripts
 {
 	use WaughJ\FileLoader\FileLoader;
 	use WaughJ\WPMetaBox\WPMetaBox;
-	use WaughJ\WPThemeOption\WPThemeOption;
-	use WaughJ\WPThemeOption\WPThemeOptionsPage;
-	use WaughJ\WPThemeOption\WPThemeOptionsPageManager;
-	use WaughJ\WPThemeOption\WPThemeOptionsSection;
 
 	class WPSheetManager
 	{
-		public function __construct( FileLoader $loader, string $wp_action, WPMetaBox $meta_box, string $option_slug, string $option_name, string $default_wp_hook = 'wp_enqueue_scripts' )
+		public function __construct( FileLoader $loader, string $wp_action, WPMetaBox $meta_box, WPScriptThemeOption $option, string $default_wp_hook = 'wp_enqueue_scripts' )
 		{
 			$this->loader = $loader;
 			$this->wp_action = $wp_action;
 			$this->meta_box = $meta_box;
 			$this->default_wp_hook = $default_wp_hook;
-
-			$section = self::getWPThemeOptionSection();
-			$this->option = new WPThemeOption
-			(
-				$section,
-				$option_slug,
-				$option_name
-			);
+			$this->option = $option;
 
 			add_action
 			(
 				$this->default_wp_hook,
 				function()
 				{
-					$main_sheet = $this->option->getOptionValue();
+					$main_sheet = $this->option->getValue();
 					if ( $main_sheet !== '' )
 					{
 						$this->enqueue( $main_sheet );
@@ -58,22 +47,26 @@ namespace WaughJ\WPScripts
 
 		public function register( string $name, string $wp_hook = null ) : void
 		{
-			if ( !$wp_hook )
-			{
-				$wp_hook = $this->default_wp_hook;
-			}
-			add_action( $wp_hook, self::generateRegistrar( $name ) );
+			add_action( $this->getHook( $wp_hook ), self::generateRegistrar( $name ) );
+		}
+
+		public function registerRaw( string $name, string $src, string $wp_hook = null, string $version = null ) : void
+		{
+			add_action
+			(
+				$this->getHook( $wp_hook ),
+				function() use ( $name, $src, $version )
+				{
+					call_user_func( $this->wp_action, $name, $src, [], $version );
+				}
+			);
 		}
 
 		public function addRegistrator( callable $function, string $wp_hook = null ) : void
 		{
-			if ( !$wp_hook )
-			{
-				$wp_hook = $this->default_wp_hook;
-			}
 			add_action
 			(
-				$wp_hook,
+				$this->getHook( $wp_hook ),
 				function() use ( $function )
 				{
 					$sheets = $function();
@@ -95,19 +88,6 @@ namespace WaughJ\WPScripts
 			return ( string )( $this->loader->getVersion( $name ) );
 		}
 
-		public static function getWPThemeOptionSection() : WPThemeOptionsSection
-		{
-			if ( self::$theme_options_section === null )
-			{
-				if ( self::$theme_options_page === null )
-				{
-					self::$theme_options_page = WPThemeOptionsPageManager::initializeIfNotAlreadyInitialized( 'directories', 'Directories' );
-				}
-				self::$theme_options_section = new WPThemeOptionsSection( self::$theme_options_page, 'main_scripts', 'Main Scripts' );
-			}
-			return self::$theme_options_section;
-		}
-
 		private function enqueue( string $name ) : void
 		{
 			call_user_func( $this->wp_action, $name, $this->getSource( $name ), [], $this->getVersion( $name ) );
@@ -121,13 +101,15 @@ namespace WaughJ\WPScripts
 			};
 		}
 
+		private function getHook( string $hook = null ) : string
+		{
+			return ( $hook ) ? $hook : $this->default_wp_hook;
+		}
+
 		private $loader;
 		private $wp_action;
 		private $meta_box;
 		private $default_wp_hook;
 		private $option;
-
-		private static $theme_options_page = null;
-		private static $theme_options_section = null;
 	}
 }

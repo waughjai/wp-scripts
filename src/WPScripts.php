@@ -26,14 +26,13 @@ namespace WaughJ\WPScripts
 					'page-js',
 					'Page JavaScript'
 				),
-				'main_js',
-				'Main JS',
+				new WPScriptThemeOption( 'main_js', 'Main JS' ),
 				'wp_footer'
 			);
 
 			self::$no_jquery_checkbox = new WPThemeOption
 			(
-				WPSheetManager::getWPThemeOptionSection(),
+				WPScriptThemeOption::getSection(),
 				'remove_jquery',
 				'Remove jQuery?',
 				[ 'input_type' => 'checkbox' ]
@@ -55,6 +54,11 @@ namespace WaughJ\WPScripts
 		public static function register( string $name, bool $load_in_header = false ) : void
 		{
 			self::$sheet_manager->register( $name, self::getWPHook( $load_in_header ) );
+		}
+
+		public static function registerRaw( string $name, string $src, bool $load_in_header = false, string $version = null ) : void
+		{
+			self::$sheet_manager->registerRaw( $name, $src, self::getWPHook( $load_in_header ), $version );
 		}
 
 		public static function addRegistrator( callable $function, bool $load_in_header = false ) : void

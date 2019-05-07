@@ -47,7 +47,7 @@
 		$enqueued_stylesheets[ $name ] =
 		[
 			'name' => $name,
-			'url' => $url,
+			'url' => $url . ( ( $version ) ? '?m=' . $version : '' ),
 			'version' => $version
 		];
 	}
@@ -58,7 +58,7 @@
 		$enqueued_scripts[ $name ] =
 		[
 			'name' => $name,
-			'url' => $url,
+			'url' => $url . ( ( $version ) ? '?m=' . $version : '' ),
 			'version' => $version
 		];
 		global $last_type;
@@ -72,7 +72,7 @@
 		global $enqueued_stylesheets;
 		if ( array_key_exists( $name, $enqueued_stylesheets ) )
 		{
-			return $enqueued_stylesheets[ $name ][ 'url' ] . '?m=' . $enqueued_stylesheets[ $name ][ 'version' ];
+			return $enqueued_stylesheets[ $name ][ 'url' ];
 		}
 		return null;
 	}
@@ -82,7 +82,7 @@
 		global $enqueued_scripts;
 		if ( array_key_exists( $name, $enqueued_scripts ) )
 		{
-			return $enqueued_scripts[ $name ][ 'url' ] . '?m=' . $enqueued_scripts[ $name ][ 'version' ];
+			return $enqueued_scripts[ $name ][ 'url' ];
 		}
 		return null;
 	}

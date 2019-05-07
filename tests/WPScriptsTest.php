@@ -18,6 +18,10 @@ class WPScriptsTest extends TestCase
 		$this->assertEquals( get_script_action( 'main' ), 'wp_footer' );
 		WPScripts::register( 'jquery', true );
 		$this->assertEquals( get_script_action( 'jquery' ), 'wp_enqueue_scripts' );
+	}
+
+	public function testAddRegistrator()
+	{
 		WPScripts::addRegistrator
 		(
 			function() : array
@@ -29,5 +33,12 @@ class WPScriptsTest extends TestCase
 		$this->assertTrue( is_script_registered( 'page' ) );
 		$this->assertFalse( is_script_registered( 'nopage' ) );
 		$this->assertEquals( get_script_action( 'page' ), 'wp_enqueue_scripts' );
+	}
+
+	public function testRegisterRaw()
+	{
+		WPScripts::registerRaw( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js' );
+		$this->assertTrue( is_script_registered( 'jquery' ) );
+		$this->assertEquals( get_script_url( 'jquery' ), 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js' );
 	}
 }
