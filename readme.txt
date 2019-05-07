@@ -2,8 +2,8 @@
 Contributors: waughjai
 Tags: scripts
 Requires at least: 5.0.0
-Tested up to: 5.1.1
-Stable tag: 1.1.0
+Tested up to: 5.2
+Stable tag: 1.1.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -36,6 +36,9 @@ Beyond this, stylesheets & javascript files can be loaded manually in PHP by cal
 
 
 == Changelog ==
+
+= 1.1.1 =
+* Test in WordPress 5.2
 
 = 1.1.0 =
 * Add Ability to make mo' complex registration functions for sheet managers & ability to easily register absolute URLs.
