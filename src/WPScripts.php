@@ -35,7 +35,7 @@ namespace WaughJ\WPScripts
 			(
 				WPSheetManager::getWPThemeOptionSection(),
 				'remove_jquery',
-				'¿Remove jQuery?',
+				'Remove jQuery?',
 				[ 'input_type' => 'checkbox' ]
 			);
 
@@ -55,6 +55,11 @@ namespace WaughJ\WPScripts
 		public static function register( string $name, bool $load_in_header = false ) : void
 		{
 			self::$sheet_manager->register( $name, self::getWPHook( $load_in_header ) );
+		}
+
+		public static function addRegistrator( callable $function, bool $load_in_header = false ) : void
+		{
+			self::$sheet_manager->addRegistrator( $function, self::getWPHook( $load_in_header ) );
 		}
 
 		public static function dequeueWPDefaults() : void

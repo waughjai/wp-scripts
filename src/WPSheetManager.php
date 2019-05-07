@@ -65,6 +65,26 @@ namespace WaughJ\WPScripts
 			add_action( $wp_hook, self::generateRegistrar( $name ) );
 		}
 
+		public function addRegistrator( callable $function, string $wp_hook = null ) : void
+		{
+			if ( !$wp_hook )
+			{
+				$wp_hook = $this->default_wp_hook;
+			}
+			add_action
+			(
+				$wp_hook,
+				function() use ( $function )
+				{
+					$sheets = $function();
+					foreach ( $sheets as $sheet )
+					{
+						$this->enqueue( $sheet );
+					}
+				}
+			);
+		}
+
 		public function getSource( string $name ) : string
 		{
 			return $this->loader->getSource( $name );

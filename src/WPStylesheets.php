@@ -35,6 +35,11 @@ namespace WaughJ\WPScripts
 			self::$sheet_manager->register( $name, 'wp_enqueue_scripts' );
 		}
 
+		public static function addRegistrator( callable $function ) : void
+		{
+			self::$sheet_manager->addRegistrator( $function, 'wp_enqueue_scripts' );
+		}
+
 		private static $sheet_manager;
 	}
 }

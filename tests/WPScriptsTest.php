@@ -18,5 +18,16 @@ class WPScriptsTest extends TestCase
 		$this->assertEquals( get_script_action( 'main' ), 'wp_footer' );
 		WPScripts::register( 'jquery', true );
 		$this->assertEquals( get_script_action( 'jquery' ), 'wp_enqueue_scripts' );
+		WPScripts::addRegistrator
+		(
+			function() : array
+			{
+				return ( true ) ? [ 'page' ] : [ 'nopage' ];
+			},
+			true
+		);
+		$this->assertTrue( is_script_registered( 'page' ) );
+		$this->assertFalse( is_script_registered( 'nopage' ) );
+		$this->assertEquals( get_script_action( 'page' ), 'wp_enqueue_scripts' );
 	}
 }
