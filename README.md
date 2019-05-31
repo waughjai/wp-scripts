@@ -1,4 +1,4 @@
-# WAJ Scripts
+# WP Scripts
 
 WordPress component for easily adding CSS stylesheets & JavaScript files.
 
