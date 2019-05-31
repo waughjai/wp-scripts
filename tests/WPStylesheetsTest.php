@@ -2,7 +2,6 @@
 
 require_once( 'MockWordPress.php' );
 
-require_once( 'waj-scripts.php' );
 use PHPUnit\Framework\TestCase;
 use WaughJ\WPScripts\WPStylesheets;
 
@@ -10,6 +9,7 @@ class WPStylesheetsTest extends TestCase
 {
 	public function testObjectWorks()
 	{
+		WPStylesheets::init();
 		$this->assertTrue( is_stylesheet_registered( 'home' ) );
 		$this->assertFalse( is_stylesheet_registered( 'main' ) );
 		WPStylesheets::register( 'main' );

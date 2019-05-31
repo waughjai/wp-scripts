@@ -1,8 +1,8 @@
 {
-    "name": "waughj/waj-scripts",
-    "description": "WordPress plugin for easily adding CSS stylesheets & JavaScript files.",
+    "name": "waughj/wp-scripts",
+    "description": "WordPress component for easily adding CSS stylesheets & JavaScript files.",
     "keywords": [ "wordpress", "plugin", "stylesheets", "scripts" ],
-    "license": "GPL-2.0-or-later",
+    "license": "AGPL-3.0-or-later",
     "authors": [
         {
             "name": "Jaimeson Waugh",
