@@ -1,7 +1,6 @@
 <?php
 
 	use WaughJ\Directory\Directory;
-	use function WaughJ\TestHashItem\TestHashItemExists;
 
 	global $enqueued_stylesheets;
 	$enqueued_stylesheets = [];
@@ -90,7 +89,7 @@
 	function get_script_action( $name )
 	{
 		global $actions;
-		return TestHashItemExists( $actions, $name, '' );
+		return $actions[ $name ] ?? '';
 	}
 
 	function add_meta_box()

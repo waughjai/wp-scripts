@@ -40,4 +40,12 @@ class WPStylesheetsTest extends TestCase
 		$this->assertTrue( is_stylesheet_registered( 'roboto' ) );
 		$this->assertEquals( get_stylesheet_url( 'roboto' ), 'https://fonts.googleapis.com/css?family=Roboto?m=20190507' );
 	}
+
+	public function testMultipleScripts()
+	{
+		WPStylesheets::init();
+		WPStylesheets::register( 'main,other' );
+		$this->assertTrue( is_stylesheet_registered( 'main' ) );
+		$this->assertTrue( is_stylesheet_registered( 'other' ) );
+	}
 }

@@ -90,7 +90,11 @@ class WPSheetManager
 
 	private function enqueue( string $name ) : void
 	{
-		call_user_func( $this->wp_action, $name, $this->getSource( $name ), [], $this->getVersion( $name ) );
+		$scripts = explode( ',', $name );
+		foreach ( $scripts as $script )
+		{
+			call_user_func( $this->wp_action, $script, $this->getSource( $script ), [], $this->getVersion( $script ) );
+		}
 	}
 
 	private function generateRegistrar( string $name ) : callable
