@@ -12,6 +12,9 @@ WordPress component for easily adding CSS stylesheets & JavaScript files.
 
 ## Changelog
 
+### 1.2.0
+* Add ability to add meta box to other post types
+
 ### 1.1.0
 * Allow multiple scripts through 1 register call using commas.
 
