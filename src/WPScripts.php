@@ -9,7 +9,7 @@ use WaughJ\WPThemeOption\WPThemeOption;
 
 class WPScripts
 {
-	public static function init() : void
+	public static function init( array $page_types_for_includer = [ 'page' ] ) : void
 	{
 		self::$sheet_manager = new WPSheetManager
 		(
@@ -27,7 +27,8 @@ class WPScripts
 				'Page JavaScript'
 			),
 			new WPScriptThemeOption( 'main_js', 'Main JS' ),
-			'wp_footer'
+			'wp_footer',
+			$page_types_for_includer
 		);
 
 		self::$no_jquery_checkbox = new WPThemeOption

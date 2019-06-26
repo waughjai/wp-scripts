@@ -8,13 +8,14 @@ use WaughJ\WPMetaBox\WPMetaBox;
 
 class WPSheetManager
 {
-	public function __construct( FileLoader $loader, string $wp_action, WPMetaBox $meta_box, WPScriptThemeOption $option, string $default_wp_hook = 'wp_enqueue_scripts' )
+	public function __construct( FileLoader $loader, string $wp_action, WPMetaBox $meta_box, WPScriptThemeOption $option, string $default_wp_hook = 'wp_enqueue_scripts', array $page_types_for_includer = [ 'page' ] )
 	{
 		$this->loader = $loader;
 		$this->wp_action = $wp_action;
 		$this->meta_box = $meta_box;
 		$this->default_wp_hook = $default_wp_hook;
 		$this->option = $option;
+		$this->page_types_for_includer = $page_types_for_includer;
 
 		add_action
 		(
@@ -27,7 +28,7 @@ class WPSheetManager
 					$this->enqueue( $main_sheet );
 				}
 
-				if ( get_post_type() == 'page' )
+				if ( in_array( get_post_type(), $this->page_types_for_includer ) )
 				{
 					$page_sheets = get_post_meta( get_the_ID(), $this->meta_box->getSlug(), false );
 					if ( $page_sheets )
@@ -115,4 +116,5 @@ class WPSheetManager
 	private $meta_box;
 	private $default_wp_hook;
 	private $option;
+	private $page_types_for_includer;
 }

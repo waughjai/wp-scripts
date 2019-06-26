@@ -8,7 +8,7 @@ use WaughJ\WPMetaBox\WPMetaBox;
 
 class WPStylesheets
 {
-	public static function init() : void
+	public static function init( array $page_types_for_includer = [ 'page' ] ) : void
 	{
 		self::$sheet_manager = new WPSheetManager
 		(
@@ -23,9 +23,12 @@ class WPStylesheets
 			new WPMetaBox
 				(
 					'page-css',
-					'Page Stylesheets'
+					'Page Stylesheets',
+					[ 'post-type' => $page_types_for_includer ]
 				),
-			new WPScriptThemeOption( 'main_css', 'Main CSS' )
+			new WPScriptThemeOption( 'main_css', 'Main CSS' ),
+			'wp_enqueue_scripts',
+			$page_types_for_includer
 		);
 	}
 
