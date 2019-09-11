@@ -75,6 +75,7 @@ class WPScripts
 			function()
 			{
 				wp_deregister_script( 'jquery' );
+				wp_deregister_script( 'wp-embed' );
 			}
 		);
 	}

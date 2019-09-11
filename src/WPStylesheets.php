@@ -47,5 +47,18 @@ class WPStylesheets
 		self::$sheet_manager->addRegistrator( $function, 'wp_enqueue_scripts' );
 	}
 
+	public static function dequeueWPDefaults() : void
+	{
+		add_action
+		(
+			'wp_enqueue_scripts',
+			function()
+			{
+				wp_deregister_style( 'wp-block-library' );
+				wp_deregister_style( 'wp-block-library-theme' );
+			}
+		);
+	}
+
 	private static $sheet_manager;
 }
