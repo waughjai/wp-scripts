@@ -8,29 +8,31 @@ use WaughJ\WPMetaBox\WPMetaBox;
 
 class WPSheetManager
 {
-	public function __construct( FileLoader $loader, string $wp_action, WPMetaBox $meta_box, WPScriptThemeOption $option, string $default_wp_hook = 'wp_enqueue_scripts', array $page_types_for_includer = [ 'page' ] )
+	public function __construct( FileLoader $loader, string $wp_action, string $default_wp_hook = 'wp_enqueue_scripts', array $page_types_for_includer = [ 'page' ] )
 	{
 		$this->loader = $loader;
 		$this->wp_action = $wp_action;
-		$this->meta_box = $meta_box;
 		$this->default_wp_hook = $default_wp_hook;
-		$this->option = $option;
 		$this->page_types_for_includer = $page_types_for_includer;
+	}
+
+	public function registerPageMetaBox( string $slug, string $name ) : void
+	{
+		$meta_box = new WPMetaBox
+		(
+			$slug,
+			$name,
+			$this->page_types_for_includer
+		);
 
 		add_action
 		(
 			$this->default_wp_hook,
-			function()
+			function() use ( $meta_box )
 			{
-				$main_sheet = $this->option->getValue();
-				if ( $main_sheet !== '' )
-				{
-					$this->enqueue( $main_sheet );
-				}
-
 				if ( in_array( get_post_type(), $this->page_types_for_includer ) )
 				{
-					$page_sheets = get_post_meta( get_the_ID(), $this->meta_box->getSlug(), false );
+					$page_sheets = $meta_box->getValue( get_the_ID(), false );
 					if ( $page_sheets )
 					{
 						foreach ( $page_sheets as $sheet )
@@ -46,12 +48,12 @@ class WPSheetManager
 		);
 	}
 
-	public function register( string $name, string $wp_hook = null ) : void
+	public function register( string $name, ?string $wp_hook = null ) : void
 	{
 		add_action( $this->getHook( $wp_hook ), self::generateRegistrar( $name ) );
 	}
 
-	public function registerRaw( string $name, string $src, string $wp_hook = null, string $version = null ) : void
+	public function registerRaw( string $name, string $src, ?string $wp_hook = null, ?string $version = null ) : void
 	{
 		add_action
 		(
@@ -63,7 +65,7 @@ class WPSheetManager
 		);
 	}
 
-	public function addRegistrator( callable $function, string $wp_hook = null ) : void
+	public function addRegistrator( callable $function, ?string $wp_hook = null ) : void
 	{
 		add_action
 		(
@@ -106,15 +108,13 @@ class WPSheetManager
 		};
 	}
 
-	private function getHook( string $hook = null ) : string
+	private function getHook( ?string $hook = null ) : string
 	{
 		return ( $hook ) ? $hook : $this->default_wp_hook;
 	}
 
 	private $loader;
 	private $wp_action;
-	private $meta_box;
 	private $default_wp_hook;
-	private $option;
 	private $page_types_for_includer;
 }

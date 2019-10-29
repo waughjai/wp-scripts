@@ -3,9 +3,37 @@
 	use WaughJ\Directory\Directory;
 
 	global $enqueued_stylesheets;
-	$enqueued_stylesheets = [];
+	$enqueued_stylesheets =
+	[
+		'wp-block-library' =>
+		[
+			'name' => 'wp-block-library',
+			'url' => '/',
+			'version' => '0.1.0'
+		],
+		'wp-block-library-theme' =>
+		[
+			'name' => 'wp-block-library-theme',
+			'url' => '/',
+			'version' => '0.1.0'
+		]
+	];
 	global $enqueued_scripts;
-	$enqueued_scripts = [];
+	$enqueued_scripts =
+	[
+		'jquery' =>
+		[
+			'name' => 'jquery',
+			'url' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js',
+			'version' => '3.4.1'
+		],
+		'wp-embed' =>
+		[
+			'name' => 'wp-embed',
+			'url' => '/',
+			'version' => '0.1.0'
+		]
+	];
 	global $last_type;
 	$last_type = null;
 	global $actions;
@@ -64,6 +92,20 @@
 		global $actions;
 		$actions[ $name ] = $last_type;
 		$last_type = null;
+	}
+
+	function wp_deregister_script( $name )
+	{
+		global $enqueued_scripts;
+		global $actions;
+		unset( $enqueued_scripts[ $name ] );
+		unset( $actions[ $name ] );
+	}
+
+	function wp_deregister_style( $name )
+	{
+		global $enqueued_stylesheets;
+		unset( $enqueued_stylesheets[ $name ] );
 	}
 
 	function get_stylesheet_url( $name ) : string

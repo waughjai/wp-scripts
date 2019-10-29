@@ -5,7 +5,6 @@ namespace WaughJ\WPScripts;
 
 use WaughJ\FileLoader\FileLoader;
 use WaughJ\WPMetaBox\WPMetaBox;
-use WaughJ\WPThemeOption\WPThemeOption;
 
 class WPScripts
 {
@@ -21,35 +20,14 @@ class WPScripts
 				'extension' => 'js'
 			]),
 			'wp_enqueue_script',
-			new WPMetaBox
-			(
-				'page-js',
-				'Page JavaScript'
-			),
-			new WPScriptThemeOption( 'main_js', 'Main JS' ),
 			'wp_footer',
 			$page_types_for_includer
 		);
+	}
 
-		self::$no_jquery_checkbox = new WPThemeOption
-		(
-			WPScriptThemeOption::getSection(),
-			'remove_jquery',
-			'Remove jQuery?',
-			[ 'input_type' => 'checkbox' ]
-		);
-
-		add_action
-		(
-			'wp_enqueue_scripts',
-			function()
-			{
-				if ( self::$no_jquery_checkbox->getOptionValue() )
-				{
-					wp_deregister_script( 'jquery' );
-				}
-			}
-		);
+	public static function registerPageMetaBox() : void
+	{
+		self::$sheet_manager->registerPageMetaBox( 'page-js', 'Page JavaScript' );
 	}
 
 	public static function register( string $name, bool $load_in_header = false ) : void

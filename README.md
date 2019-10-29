@@ -5,12 +5,20 @@ WordPress component for easily adding CSS stylesheets & JavaScript files.
 ## Examples
 
 	use WaughJ\WPScripts\WPStylesheets;
+	WPStylesheets::init();
 	WPStylesheets::register( 'main' );
+	WPStylesheets::registerPageMetaBox();
 
 	use WaughJ\WPScripts\WPScripts;
+	WPScripts::init();
 	WPScripts::register( 'blog', true );
+	WPScripts::registerPageMetaBox();
 
 ## Changelog
+
+### 2.0.0
+* Separate page meta box registrar from initialization so it can go last.
+* Remove WordPress admin pages.
 
 ### 1.3.0
 * Add dequeueWPDefaults method for WPStylesheets to dequeue new block library stylesheets for Gutenberg and add wp-embeds to dequeued scripts form WPScripts' dequeueWPDefaults method

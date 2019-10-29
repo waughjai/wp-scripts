@@ -10,11 +10,12 @@ class WPStylesheetsTest extends TestCase
 	public function testObjectWorks()
 	{
 		WPStylesheets::init();
-		$this->assertTrue( is_stylesheet_registered( 'home' ) );
 		$this->assertFalse( is_stylesheet_registered( 'main' ) );
 		WPStylesheets::register( 'main' );
 		$this->assertTrue( is_stylesheet_registered( 'main' ) );
 		$this->assertEquals( get_stylesheet_url( 'main' ), 'https://www.example.com/css/main.css?m=' . filemtime( getcwd() . '/tests/css/main.css' ) );
+		WPStylesheets::registerPageMetaBox();
+		$this->assertTrue( is_stylesheet_registered( 'home' ) );
 	}
 
 	public function testAddRegistrator()
@@ -47,5 +48,14 @@ class WPStylesheetsTest extends TestCase
 		WPStylesheets::register( 'main,other' );
 		$this->assertTrue( is_stylesheet_registered( 'main' ) );
 		$this->assertTrue( is_stylesheet_registered( 'other' ) );
+	}
+
+	public function testDequeueWPDefaults()
+	{
+		$this->assertTrue( is_stylesheet_registered( 'wp-block-library' ) );
+		$this->assertTrue( is_stylesheet_registered( 'wp-block-library-theme' ) );
+		WPStylesheets::dequeueWPDefaults();
+		$this->assertFalse( is_stylesheet_registered( 'wp-block-library' ) );
+		$this->assertFalse( is_stylesheet_registered( 'wp-block-library-theme' ) );
 	}
 }

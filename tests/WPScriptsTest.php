@@ -7,17 +7,18 @@ use WaughJ\WPScripts\WPScripts;
 
 class WPScriptsTest extends TestCase
 {
-	public function testObjectWorks()
+	public function testBasic()
 	{
 		WPScripts::init();
-		$this->assertTrue( is_script_registered( 'home' ) );
 		$this->assertFalse( is_script_registered( 'main' ) );
 		WPScripts::register( 'main' );
 		$this->assertTrue( is_script_registered( 'main' ) );
 		$this->assertEquals( get_script_url( 'main' ), 'https://www.example.com/js/main.js?m=' . filemtime( getcwd() . '/tests/js/main.js' ) );
 		$this->assertEquals( get_script_action( 'main' ), 'wp_footer' );
-		WPScripts::register( 'jquery', true );
-		$this->assertEquals( get_script_action( 'jquery' ), 'wp_enqueue_scripts' );
+		WPScripts::register( 'header', true );
+		$this->assertEquals( get_script_action( 'header' ), 'wp_enqueue_scripts' );
+		WPScripts::registerPageMetaBox();
+		$this->assertTrue( is_script_registered( 'home' ) );
 	}
 
 	public function testAddRegistrator()
@@ -37,8 +38,17 @@ class WPScriptsTest extends TestCase
 
 	public function testRegisterRaw()
 	{
-		WPScripts::registerRaw( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js' );
+		WPScripts::registerRaw( 'hammer', 'https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js' );
+		$this->assertTrue( is_script_registered( 'hammer' ) );
+		$this->assertEquals( get_script_url( 'hammer' ), 'https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js' );
+	}
+
+	public function testDequeueWPDefaults()
+	{
 		$this->assertTrue( is_script_registered( 'jquery' ) );
-		$this->assertEquals( get_script_url( 'jquery' ), 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js' );
+		$this->assertTrue( is_script_registered( 'wp-embed' ) );
+		WPScripts::dequeueWPDefaults();
+		$this->assertFalse( is_script_registered( 'jquery' ) );
+		$this->assertFalse( is_script_registered( 'wp-embed' ) );
 	}
 }

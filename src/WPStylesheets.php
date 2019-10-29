@@ -13,23 +13,21 @@ class WPStylesheets
 		self::$sheet_manager = new WPSheetManager
 		(
 			new FileLoader
-				([
-					'directory-url' => get_stylesheet_directory_uri(),
-					'directory-server' => get_stylesheet_directory(),
-					'shared-directory' => 'css',
-					'extension' => 'css'
-				]),
+			([
+				'directory-url' => get_stylesheet_directory_uri(),
+				'directory-server' => get_stylesheet_directory(),
+				'shared-directory' => 'css',
+				'extension' => 'css'
+			]),
 			'wp_enqueue_style',
-			new WPMetaBox
-				(
-					'page-css',
-					'Page Stylesheets',
-					[ 'post-type' => $page_types_for_includer ]
-				),
-			new WPScriptThemeOption( 'main_css', 'Main CSS' ),
 			'wp_enqueue_scripts',
 			$page_types_for_includer
 		);
+	}
+
+	public static function registerPageMetaBox() : void
+	{
+		self::$sheet_manager->registerPageMetaBox( 'page-css', 'Page Stylesheets' );
 	}
 
 	public static function register( string $name ) : void
