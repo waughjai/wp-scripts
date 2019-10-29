@@ -6,12 +6,31 @@ WordPress component for easily adding CSS stylesheets & JavaScript files.
 
 	use WaughJ\WPScripts\WPStylesheets;
 	WPStylesheets::init();
+	WPStylesheets::dequeueWPDefaults();
 	WPStylesheets::register( 'main' );
+	WPStylesheets::registerRaw( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', true, '3.4.1' );
+	WPScripts::addRegistrator
+	(
+		function() : array
+		{
+			return ( true ) ? [ 'page' ] : [ 'nopage' ];
+		},
+		true
+	);
 	WPStylesheets::registerPageMetaBox();
 
 	use WaughJ\WPScripts\WPScripts;
 	WPScripts::init();
+	WPScripts::dequeueWPDefaults();
 	WPScripts::register( 'blog', true );
+	WPStylesheets::registerRaw( 'roboto', 'https://fonts.googleapis.com/css?family=Roboto', '20190507' );
+	WPStylesheets::addRegistrator
+	(
+		function() : array
+		{
+			return ( true ) ? [ 'page' ] : [ 'nopage' ];
+		}
+	);
 	WPScripts::registerPageMetaBox();
 
 ## Changelog
