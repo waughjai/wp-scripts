@@ -43,11 +43,11 @@ class WPScriptsTest extends TestCase
 		$this->assertEquals( get_script_url( 'hammer' ), 'https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js' );
 	}
 
-	public function testDequeueWPDefaults()
+	public function testDeregisterWPDefaults()
 	{
 		$this->assertTrue( is_script_registered( 'jquery' ) );
 		$this->assertTrue( is_script_registered( 'wp-embed' ) );
-		WPScripts::dequeueWPDefaults();
+		WPScripts::deregisterWPDefaults();
 		$this->assertFalse( is_script_registered( 'jquery' ) );
 		$this->assertFalse( is_script_registered( 'wp-embed' ) );
 	}

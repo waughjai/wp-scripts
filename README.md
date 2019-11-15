@@ -6,7 +6,7 @@ WordPress component for easily adding CSS stylesheets & JavaScript files.
 
 	use WaughJ\WPScripts\WPStylesheets;
 	WPStylesheets::init();
-	WPStylesheets::dequeueWPDefaults();
+	WPStylesheets::deregisterWPDefaults();
 	WPStylesheets::register( 'main' );
 	WPStylesheets::registerRaw( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', true, '3.4.1' );
 	WPScripts::addRegistrator
@@ -21,7 +21,7 @@ WordPress component for easily adding CSS stylesheets & JavaScript files.
 
 	use WaughJ\WPScripts\WPScripts;
 	WPScripts::init();
-	WPScripts::dequeueWPDefaults();
+	WPScripts::deregisterWPDefaults();
 	WPScripts::register( 'blog', true );
 	WPStylesheets::registerRaw( 'roboto', 'https://fonts.googleapis.com/css?family=Roboto', '20190507' );
 	WPStylesheets::addRegistrator
@@ -35,12 +35,16 @@ WordPress component for easily adding CSS stylesheets & JavaScript files.
 
 ## Changelog
 
+### 2.1.0
+* Remove emoji JS on dequeueWPDefaults method call
+* Add alternate ( more accurate ) name for dequeueWPDefaults method: “deregisterWPDefaults”
+
 ### 2.0.0
-* Separate page meta box registrar from initialization so it can go last.
-* Remove WordPress admin pages.
+* Separate page meta box registrar from initialization so it can go last
+* Remove WordPress admin pages
 
 ### 1.3.0
-* Add dequeueWPDefaults method for WPStylesheets to dequeue new block library stylesheets for Gutenberg and add wp-embeds to dequeued scripts form WPScripts' dequeueWPDefaults method
+* Add dequeueWPDefaults method for WPStylesheets to dequeue new block library stylesheets for Gutenberg and add wp-embeds to dequeued scripts form WPScripts’ dequeueWPDefaults method
 
 ### 1.2.0
 * Add ability to add meta box to other post types

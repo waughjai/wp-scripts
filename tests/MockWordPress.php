@@ -187,3 +187,18 @@
 	function add_settings_field()
 	{
 	}
+
+	function remove_action()
+	{
+
+	}
+
+	function add_filter()
+	{
+
+	}
+
+	function remove_filter()
+	{
+		
+	}

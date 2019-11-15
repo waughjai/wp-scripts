@@ -50,11 +50,11 @@ class WPStylesheetsTest extends TestCase
 		$this->assertTrue( is_stylesheet_registered( 'other' ) );
 	}
 
-	public function testDequeueWPDefaults()
+	public function testDeregisterWPDefaults()
 	{
 		$this->assertTrue( is_stylesheet_registered( 'wp-block-library' ) );
 		$this->assertTrue( is_stylesheet_registered( 'wp-block-library-theme' ) );
-		WPStylesheets::dequeueWPDefaults();
+		WPStylesheets::deregisterWPDefaults();
 		$this->assertFalse( is_stylesheet_registered( 'wp-block-library' ) );
 		$this->assertFalse( is_stylesheet_registered( 'wp-block-library-theme' ) );
 	}
